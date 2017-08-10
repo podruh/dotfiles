@@ -91,7 +91,7 @@ alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Ruby on Rails
-alias pass='rake db:drop db:setup db:seed && rails s'
+alias rdbmrs='rake db:migrate:reset db:seed'
 
 # Show this file
 alias catal='cat ~/dotfiles/.aliases'
@@ -102,6 +102,7 @@ alias ga='git add'
 alias gp='git push'
 alias gl='git log'
 alias gd='git diff'
+alias gdt='git difftool'
 alias gdc='git diff --cached'
 alias gc='git commit'
 alias gm='git commit -m'
