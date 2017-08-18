@@ -25,3 +25,6 @@ fi;
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
+
+source ~/.git-completion.bash
+__git_complete g __git_main
