@@ -92,6 +92,8 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Ruby on Rails
 alias rdbmrs='rake db:migrate:reset db:seed'
+alias rdbm='rails db:migrate'
+alies rdbr='rails db:rollback'
 
 # Show this file
 alias catal='cat ~/dotfiles/.aliases'
