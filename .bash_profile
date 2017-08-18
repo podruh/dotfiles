@@ -27,4 +27,4 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 source ~/.git-completion.bash
-__git_complete g __git_main
+__git_complete gco _git_checkout
