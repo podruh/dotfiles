@@ -108,3 +108,6 @@ alias gsb='git stash branch'
 alias heroku_log='heroku logs --source app -t'
 alias gphm='git push heroku master'
 alias herokudeploy='gphm && heroku run rake db:migrate'
+
+# Dokku
+alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
