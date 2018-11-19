@@ -5,15 +5,22 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-	echo Installing zsh...
+	echo ----------- Installing zsh...
 	sudo apt install zsh
-	echo installint zsh prezto...
+	echo ----------- Installing zsh prezto...
 	git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
- 	echo Installing  PowerLevel9k theme...
+
+ 	echo ----------- Installing  PowerLevel9k theme...
 	git clone https://github.com/bhilburn/powerlevel9k.git  ~/.zprezto/modules/prompt/external/powerlevel9k
 	ln -s ~/.zprezto/modules/prompt/external/powerlevel9k/powerlevel9k.zsh-theme ~/.zprezto/modules/prompt/functions/prompt_powerlevel9k_setup
-	echo "Install powerline font https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#step-2-install-a-powerline-font"
+
+	echo ----------- Install powerline font https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#step-2-install-a-powerline-font
+	echo ----------- Installing RVM ...
+	sudo apt-add-repository -y ppa:rael-gc/rvm
+	sudo apt-get update
+	sudo apt-get install rvm
 	sudo chsh -s $(which zsh)
+
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
 		--exclude ".osx" \
