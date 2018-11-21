@@ -23,17 +23,7 @@ function doIt() {
 	curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
 	sudo chsh -s $(which zsh)
 
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
-		--exclude "brew.sh" \
-		--exclude ".bash_profile" \
-		--exclude ".bash_prompt" \
-		--exclude ".bashrc" \
-		-avh --no-perms . ~;
+	ln -s to_link/.* ~/
 	echo Reboot machine for changes to take place
 }
 
