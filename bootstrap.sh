@@ -19,6 +19,8 @@ function doIt() {
 	sudo apt-add-repository -y ppa:rael-gc/rvm
 	sudo apt-get update
 	sudo apt-get install rvm
+	echo ----------- Installing git-standup ...
+	curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
 	sudo chsh -s $(which zsh)
 
 	rsync --exclude ".git/" \
@@ -32,8 +34,7 @@ function doIt() {
 		--exclude ".bash_prompt" \
 		--exclude ".bashrc" \
 		-avh --no-perms . ~;
-	 
-	source ~/.zshrc
+	echo Reboot machine for changes to take place
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
