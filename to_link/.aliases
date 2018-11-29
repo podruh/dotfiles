@@ -111,8 +111,8 @@ alias herokudeploy='gphm && heroku run rake db:migrate'
 
 # Dokku
 alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
-│# Launchy
- alias lunchy='cd $HOME/work/ruby-lunchy && ruby $HOME/work/ruby-lunchy/lunchy.rb $(cat $HOME/work/ruby-lunchy/.token)'
+# Launchy
+alias lunchy='cd $HOME/work/ruby-lunchy && ruby $HOME/work/ruby-lunchy/lunchy.rb $(cat $HOME/work/ruby-lunchy/.token)'
  
  # git standup
  alias gsweek='git standup -s -d 7 | grep -v /home/* -c'

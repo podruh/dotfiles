@@ -12,7 +12,7 @@ function doIt() {
 
  	echo ----------- Installing  PowerLevel9k theme...
 	git clone https://github.com/bhilburn/powerlevel9k.git  ~/.zprezto/modules/prompt/external/powerlevel9k
-	ln -s ~/.zprezto/modules/prompt/external/powerlevel9k/powerlevel9k.zsh-theme ~/.zprezto/modules/prompt/functions/prompt_powerlevel9k_setup
+	ln -fs ~/.zprezto/modules/prompt/external/powerlevel9k/powerlevel9k.zsh-theme ~/.zprezto/modules/prompt/functions/prompt_powerlevel9k_setup
 
 	echo ----------- Install powerline font https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#step-2-install-a-powerline-font
 	echo ----------- Installing RVM ...
@@ -21,9 +21,16 @@ function doIt() {
 	sudo apt-get install rvm
 	echo ----------- Installing git-standup ...
 	curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
+	echo ----------- Installing albert ...
+	wget -nv -O Release.key https://build.opensuse.org/projects/home:manuelschneid3r/public_key
+	sudo apt-key add - < Release.key	
+	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
+	sudo apt-get update
+	sudo apt-get install albert
+
 	sudo chsh -s $(which zsh)
 
-	ln -s to_link/.* ~/
+	ln -snfr to_link/.* ~
 	echo Reboot machine for changes to take place
 }
 

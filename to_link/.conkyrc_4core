@@ -1,0 +1,97 @@
+conky.config = {
+-- -- Conky settings -- #
+	background = false,
+	update_interval = 1,
+
+	cpu_avg_samples = 1,
+	net_avg_samples = 2,
+
+	override_utf8_locale = true,
+
+	double_buffer = true,
+	no_buffers = true,
+
+	text_buffer_size = 32768,
+	imlib_cache_size = 0,
+
+-- -- Window specifications -- #
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_argb_value = 120,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_colour = '#000000',
+
+	minimum_width = 400,
+	minimum_height = 1060,
+
+	border_inner_margin = 10,
+	border_outer_margin = 0,
+	alignment = 'bottom_left',
+	gap_x = 0,
+	gap_y = 0,
+-- -- Graphics settings -- #
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+
+	-- Conky on second monitor
+	xinerama_head = 2,
+
+-- -- Text settings -- #
+-- Ícones: ${font Conky Icons by Carelli:size=14}
+	use_xft = true,
+	font = 'Ubuntu Mono:size=12',
+	xftalpha = 0.8,	
+	uppercase = false,
+	default_color = '#FFFFFF',
+--	format_human_readable = true,
+};
+
+conky.text = [[
+${color #000}${font Conky Icons by Carelli:size=30}ƃ ${color}${font Conky Icons by Carelli:size=14}ǒ${font}${battery_time}${alignr 10}$battery ${battery_bar 7,80}$alignr
+${hr 2}
+${distribution} - ${kernel} 
+
+${color #f8df58}${font Conky Icons by Carelli:size=14}Ŵ ${font}CPU$color${color grey} F:$color ${exec lscpu | grep 'CPU MHz' | awk '{ print $3/1000}' | cut -c 1-4} GHz${color grey} T:$color ${exec sensors | grep Package | cut -c 17-18}°C
+
+${goto 10}${cpu cpu0}%${goto 45}${cpubar 7,120 cpu0}${goto 175}${freq_g 0}
+${goto 10}${cpu cpu1}%${goto 45}${cpubar 7,120 cpu1}${goto 175}${freq_g 1}
+${goto 10}${cpu cpu2}%${goto 45}${cpubar 7,120 cpu2}${goto 175}${freq_g 2}
+${goto 10}${cpu cpu3}%${goto 45}${cpubar 7,120 cpu3}${goto 175}${freq_g 3}
+
+${color #f8df58}${font Conky Icons by Carelli:size=14}B ${font}RAM${voffset -5.5}$color
+
+${goto 10}$memperc%${goto 45}${membar 7,335}
+
+${color #f8df58}PROCESSES
+$hr
+${font Conky Icons by Carelli:size=14}Ŷ ${font}${goto 40}Name ${goto 180}PID${goto 235}CPU${goto 290}MEM${color}
+${goto 40}${top name 1} ${goto 180}${top pid 1}${goto 235}${top cpu 1}${goto 290}${top mem 1}
+${goto 40}${top name 2} ${goto 180}${top pid 2}${goto 235}${top cpu 2}${goto 290}${top mem 2}
+${goto 40}${top name 3} ${goto 180}${top pid 3}${goto 235}${top cpu 3}${goto 290}${top mem 3}
+${goto 40}${top name 4} ${goto 180}${top pid 4}${goto 235}${top cpu 4}${goto 290}${top mem 4}
+${goto 40}${top name 5} ${goto 180}${top pid 5}${goto 235}${top cpu 5}${goto 290}${top mem 5}
+${hr 1}
+${color #f8df58}${font Conky Icons by Carelli:size=14}B ${font}${color}${goto 40}${top_mem name 1} ${goto 180}${top_mem pid 1}${goto 235}${top_mem cpu 1}${goto 290}${top_mem mem 1}
+${goto 40}${top_mem name 2} ${goto 180}${top_mem pid 2}${goto 235}${top_mem cpu 2}${goto 290}${top_mem mem 2}
+${goto 40}${top_mem name 3} ${goto 180}${top_mem pid 3}${goto 235}${top_mem cpu 3}${goto 290}${top_mem mem 3}
+${goto 40}${top_mem name 4} ${goto 180}${top_mem pid 4}${goto 235}${top_mem cpu 4}${goto 290}${top_mem mem 4}
+${goto 40}${top_mem name 5} ${goto 180}${top_mem pid 5}${goto 235}${top_mem cpu 5}${goto 290}${top_mem mem 5}
+$hr
+Git today: ${exec cd work && git standup -s | grep -v home/$USERNAME -c}
+Git this week: ${exec cd work && git standup -s -w "MON-FRI" -d 7 | grep -v home/$USERNAME -c}
+
+${if_running spotify}${voffset -2}${font Liberation Sans:style=Bold:size=12}
+${voffset -10}${goto 10}Title: 
+${goto 15}${color2}${exec ~/spotify/spotify_info_title}${color}
+${goto 10}Artist: 
+${goto 15}${color2}${exec ~/spotify/spotify_info_artist}${color}
+${goto 10}Album: 
+${goto 15}${color2}${exec ~/spotify/spotify_info_album}${color}
+${voffset -20}
+
+${else}${color0}${font Conky Icons by Carelli:size=16}G${font}${color}${goto 32}${voffset -4}Spotify: ${color2}off${color}${voffset 4}
+${endif}
+]];

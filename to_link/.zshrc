@@ -32,4 +32,9 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 
 source ~/.aliases
+source /etc/profile.d/rvm.sh
 alias sudo='nocorrect sudo'
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
