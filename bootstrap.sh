@@ -13,15 +13,14 @@ function doIt() {
  	echo ----------- Installing  PowerLevel9k theme...
 	git clone https://github.com/bhilburn/powerlevel9k.git  ~/.zprezto/modules/prompt/external/powerlevel9k
 	ln -fs ~/.zprezto/modules/prompt/external/powerlevel9k/powerlevel9k.zsh-theme ~/.zprezto/modules/prompt/functions/prompt_powerlevel9k_setup
-	echo ----------- Installing RVM ...
-	sudo apt-add-repository -y ppa:rael-gc/rvm
-	sudo apt-get update
-	sudo apt-get install rvm
+	echo ----------- Installing rbenv ...
+	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+	git clone https://github.com/ianheggie/rbenv-binstubs.git "~/.rbenv/plugins/rbenv-binstubs"
 	echo ----------- Installing git-standup ...
 	curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
 	echo ----------- Installing albert, postgres, redis ...
 	wget -nv -O Release.key https://build.opensuse.org/projects/home:manuelschneid3r/public_key
-	sudo apt-key add - < Release.key	
+	sudo apt-key add - < Release.key
 	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
 	sudo apt-get update
 	sudo apt install postgresql postgresql-contrib albert redis-server
