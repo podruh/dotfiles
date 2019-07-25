@@ -4,7 +4,7 @@ POWERLEVEL9K_MODE='awesome-patched'
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-    
+
 local user_symbol="$"
 if [[ $(print -P "%#") =~ "#" ]]; then
     user_symbol = "#"
@@ -32,9 +32,10 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 
 source ~/.aliases
-source /etc/profile.d/rvm.sh
 alias sudo='nocorrect sudo'
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 
+if [ /snap/bin/kubectl ]; then source <(kubectl completion zsh); fi
+unsetopt nomatch
