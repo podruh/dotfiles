@@ -14,7 +14,7 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{yellow}%K{blue}%}$user_symbol %{%b%f%k%F{blue}%} %{%f%}"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon_joined context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rvm)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv rspec_stats)
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
@@ -38,4 +38,5 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 if [ /snap/bin/kubectl ]; then source <(kubectl completion zsh); fi
-unsetopt nomatch
+unsetopt nomatch #for easy use of []
+source ~/.rbenv/completions/rbenv.zsh

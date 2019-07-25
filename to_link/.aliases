@@ -73,6 +73,7 @@ alias rs='rails s'
 alias rc='rails c'
 alias rg='rails g'
 alias bi='bundle install'
+alias bib='bundle install --binstubs .bundle/bin'
 alias fs='foreman start'
 alias os='overmind start'
 alias ocw='overmind connect web'
@@ -119,7 +120,7 @@ alias herokudeploy='gphm && heroku run rake db:migrate'
 alias dokku='bash $HOME/.dokku/contrib/dokku_client.sh'
 # Launchy
 alias lunchy='cd $HOME/work/ruby-lunchy && ruby $HOME/work/ruby-lunchy/lunchy.rb $(cat $HOME/work/ruby-lunchy/.token)'
- 
+
  # git standup
  alias gsweek='git standup -s -d 7 | grep -v /home/* -c'
  alias gstoday='git standup -s | grep -v /home/* -c'

@@ -42,7 +42,8 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the query found color.
-# zstyle ':prezto:module:autosuggestions:color' found ''
+zstyle ':prezto:module:autosuggestions' color 'yes'
+zstyle ':prezto:module:autosuggestions:color' found ''
 
 #
 # Completions
@@ -129,7 +130,8 @@ zstyle ':prezto:module:prompt' theme 'powerlevel9k'
 #
 
 # Auto switch the Ruby version on directory change.
- zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+# zstyle ':prezto:module:ruby:rbenv' auto-switch 'yes'
+# zstyle ':prezto:module:ruby:info:version' format 'version:%v'
 
 #
 # Python
