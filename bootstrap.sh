@@ -5,6 +5,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
+	sudo apt install curl
 	echo ----------- Installing zsh...
 	sudo apt install zsh
 	echo ----------- Installing zsh prezto...
