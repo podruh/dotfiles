@@ -18,13 +18,10 @@ function doIt() {
 	git clone https://github.com/ianheggie/rbenv-binstubs.git "~/.rbenv/plugins/rbenv-binstubs"
 	echo ----------- Installing git-standup ...
 	curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
-	echo ----------- Installing albert, postgres, redis ...
-	wget -nv -O Release.key https://build.opensuse.org/projects/home:manuelschneid3r/public_key
-	sudo apt-key add - < Release.key
-	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
+	echo ----------- Installing postgres, redis, i3 ...
 	sudo add-apt-repository ppa:kgilmer/speed-ricer
 	sudo apt-get update
-	sudo apt install postgresql postgresql-contrib albert redis-server compton i3-gaps-wm
+	sudo apt install postgresql postgresql-contrib redis-server compton i3-gaps-wm
 	echo ----------- Setting pg user ...
 	sudo -u postgres createuser  $USERNAME -s
 	sudo chsh -s $(which zsh)
