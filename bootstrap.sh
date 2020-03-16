@@ -22,13 +22,19 @@ function doIt() {
 	wget -nv -O Release.key https://build.opensuse.org/projects/home:manuelschneid3r/public_key
 	sudo apt-key add - < Release.key
 	sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
+	sudo add-apt-repository ppa:kgilmer/speed-ricer
 	sudo apt-get update
-	sudo apt install postgresql postgresql-contrib albert redis-server
+	sudo apt install postgresql postgresql-contrib albert redis-server compton i3-gaps-wm
 	echo ----------- Setting pg user ...
 	sudo -u postgres createuser  $USERNAME -s
 	sudo chsh -s $(which zsh)
-	ln -snfr to_link/.* ~
-
+	echo ----------- Installing stow...
+	sudo apt install stow
+	stow bash \
+		compton \
+		git \
+		i3 \
+		zsh
 	echo Install powerline font https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#step-2-install-a-powerline-font
 	echo Edit /etc/redis/redis.conf and add "supervised systemd" then run "sudo systemctl restart redis.service"
 	echo Reboot machine for changes to take place

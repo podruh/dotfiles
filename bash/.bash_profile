@@ -20,3 +20,6 @@ unset file;
 
 # source ~/.git-completion.bash
 # __git_complete gco _git_checkout
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+source ~/.rbenv/completions/rbenv.bash

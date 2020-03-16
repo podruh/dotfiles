@@ -12,5 +12,7 @@ fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/apps 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export BAT_THEME="TwoDark"
+export DOKKU_HOST="stage.juicymo.cz"
