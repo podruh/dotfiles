@@ -23,3 +23,5 @@ unset file;
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 source ~/.rbenv/completions/rbenv.bash
+export PATH="$PATH:/opt/mssql-tools/bin:/snap/bin"
+
