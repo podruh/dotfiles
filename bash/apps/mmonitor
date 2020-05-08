@@ -1,0 +1,7 @@
+#!/bin/bash
+pactl unload-module module-loopback 2>/dev/null
+pactl load-module module-loopback latency_msec=1 &> /dev/null
+
+echo "Monitoring microphone input"
+( trap exit SIGINT ; read -r -d '' _ </dev/tty )
+pactl unload-module module-loopback
