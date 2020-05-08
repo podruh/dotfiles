@@ -5,7 +5,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-	sudo apt install curl
+	sudo apt install curl git
 	echo ----------- Installing zsh...
 	sudo apt install zsh
 	echo ----------- Installing zsh prezto...
@@ -17,6 +17,7 @@ function doIt() {
 	echo ----------- Installing rbenv ...
 	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 	git clone https://github.com/ianheggie/rbenv-binstubs.git "~/.rbenv/plugins/rbenv-binstubs"
+	git clone https://github.com/ianheggie/rbenv-binstubs.git "$(rbenv root)/plugins/rbenv-binstubs"
 	echo ----------- Installing git-standup ...
 	curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
 	echo ----------- Installing postgres, redis, i3 ...
