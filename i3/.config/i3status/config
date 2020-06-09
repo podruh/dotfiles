@@ -8,13 +8,14 @@
 
 general {
         colors = true
-        interval = 5
+        interval = 1
 }
 
 order += "ipv6"
 order += "wireless _first_"
 # order += "ethernet _first_"
 order += "battery all"
+order += "cpu_temperature 0"
 order += "disk /"
 order += "load"
 order += "memory"
@@ -31,7 +32,14 @@ ethernet _first_ {
 }
 
 battery all {
-        format = "%status %percentage %remaining"
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
 }
 
 disk "/" {
@@ -43,11 +51,16 @@ load {
 }
 
 memory {
-        format = "%used | %available"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+        format = "%used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
 }
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input"
 }
