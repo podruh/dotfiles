@@ -20,6 +20,7 @@ order += "disk /"
 order += "load"
 order += "memory"
 order += "tztime local"
+order += "tztime utc"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
@@ -48,6 +49,7 @@ disk "/" {
 
 load {
         format = "%1min"
+	max_threshold=8
 }
 
 memory {
@@ -60,7 +62,12 @@ tztime local {
         format = "%Y-%m-%d %H:%M:%S"
 }
 
+tztime utc {
+	timezone = "UTC"
+	format = "UTC %H:%M:%S"
+}
+
 cpu_temperature 0 {
         format = "T: %degrees °C"
-        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input"
+        path = "/sys/class/thermal/thermal_zone10/temp"
 }

@@ -80,6 +80,7 @@ alias ocw='overmind connect web'
 alias ocs='overmind connect worker'
 alias orw='overmind restart web'
 alias ors='overmind restart worker'
+alias orwp='overmind restart webpacker'
 alias bx='bundle exec'
 alias frspec='rspec && firefox coverage/index.html'
 
