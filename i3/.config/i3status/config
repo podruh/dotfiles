@@ -11,10 +11,10 @@ general {
         interval = 1
 }
 
-order += "ipv6"
-order += "wireless _first_"
-# order += "ethernet _first_"
-order += "battery all"
+#order += "ipv6"
+#order += "wireless _first_"
+order += "ethernet _first_"
+#order += "battery all"
 order += "cpu_temperature 0"
 order += "disk /"
 order += "load"
