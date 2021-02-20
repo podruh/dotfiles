@@ -32,12 +32,14 @@ font pango:Helvetica Neue, FontAwesome 10
 #exec --no-startup-id nm-applet
 
 # Rofi
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -width 40 -lines 8 -font "San Francisco Display 14"'
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -width 40 -lines 8 -font "San Francisco Display 14"'
+bindsym $mod+space exec rofi -show drun
+bindsym $mod+Ctrl+space exec rofi -show window
 
 # Lock kde session
-bindsym $mod+m exec "qdbus org.kde.ksmserver /ScreenSaver org.freedesktop.ScreenSaver.Lock"
+bindsym $mod+m exec "loginctl lock-session"
 
-exec --no-startup-id feh --bg-fill ~/Pictures/city-wall.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -104,7 +106,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+t focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -154,6 +156,10 @@ bindsym $mod+Shift+x move container to output right
 
 #Switch workspace to other output
 bindsym $mod+x move workspace to output right
+
+# Scratchpad
+bindsym $mod+Shift+dead_acute move scratchpad
+bindsym $mod+dead_acute scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -222,10 +228,14 @@ for_window [class="krunner"] floating enable
 for_window [class="Kmix"] floating enable
 
 for_window [class="Klipper"] floating enable
+for_window [class="Tilda"] floating enable
+
 
 for_window [class="Plasmoidviewer"] floating enable
+for_window [title="Welcome to RubyMine" class="jetbrains-rubymine"] floating enable
 for_window [title="win0" class="jetbrains-rubymine"] floating enable
 
+for_window [class="plasma.emojier"] floating enable, resize set 540px 432px
 
 
 # >>> Window Rules <<<
@@ -249,7 +259,6 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 
 for_window [class="Solaar"] floating enable
-
 
 ### i3-gaps stuff ###
 
@@ -307,3 +316,5 @@ mode "$mode_gaps_outer" {
 
 bindsym $mod+b sticky toggle
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id "ps -e | grep tilda || tilda"
+# bindsym $mod+d exec "ps -e | grep tilda || tilda"

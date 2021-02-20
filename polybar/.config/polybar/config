@@ -57,8 +57,8 @@ font-1 = unifont:fontformat=truetype:size=12:antialias=true;0
 font-2 = siji:pixelsize=12;1
 
 modules-left = i3 xwindow
-;modules-center = mpd
-modules-right = filesystem pulseaudio backlight-acpi xkeyboard memory cpu wlan eth battery temperature date time-utc powermenu
+modules-center = date time-utc memory cpu temperature
+modules-right = filesystem pulseaudio backlight-acpi xkeyboard wlan eth battery powermenu
 
 tray-position = right
 tray-padding = 1
@@ -237,7 +237,7 @@ interval = 1
 type = internal/date
 interval = 1
 
-date =
+date = " %Y-%m-%d"
 date-alt = " %Y-%m-%d"
 
 time = %H:%M:%S
@@ -378,12 +378,30 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = shutdown
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+format-underline = ${colors.cyan}
+label-padding = 2
+label-foreground = ${colors.foreground}
+
+# Icons mixed from Font Awesome 5 and Material Icons
+# You can copy-paste your options for each possible action, which is more
+# trouble-free but repetitive, or apply only the relevant ones (for example
+# --sink-blacklist is only needed for next-sink).
+exec = pulseaudio-control --icons-volume "🕨 ,🕩 ,🕪 " --icon-muted "🔇 " --sink-nicknames-from "device.description" --sink-nickname "alsa_output.pci-0000_00_1b.0.analog-stereo:  Speakers" --sink-nickname "alsa_output.usb-Kingston_HyperX_Virtual_Surround_Sound_00000000-00.analog-stereo:  Headphones" listen
+click-right = exec pavucontrol &
+click-left = pulseaudio-control togmute
+click-middle = pulseaudio-control --sink-blacklist "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2" next-sink
+scroll-up = pulseaudio-control --volume-max 130 up
+scroll-down = pulseaudio-control --volume-max 130 down
 
 [settings]
 screenchange-reload = true

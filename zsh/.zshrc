@@ -41,9 +41,6 @@ fi
 if [ /snap/bin/kubectl ]; then source <(kubectl completion zsh); fi
 unsetopt nomatch #for easy use of []
 source ~/.rbenv/completions/rbenv.zsh
-eval "$(rbenv init -)"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # NVM autoload
 autoload -U add-zsh-hook
